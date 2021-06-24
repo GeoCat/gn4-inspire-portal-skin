@@ -1,0 +1,44 @@
+<!-- site header -->
+<div data-ng-include="'../../catalog/views/inspireportal/templates/siteHeader.html'"></div>
+
+<!-- page header -->
+<div data-ng-include="'../../catalog/views/inspireportal/templates/pageHeader.html'"></div>
+
+<!-- GN navigation bar -->
+<div class="navbar navbar-default gn-top-bar"
+     role="navigation"
+     data-ng-show="gnCfg.mods.header.enabled"
+     data-ng-include="'../../catalog/views/inspireportal/templates/top-toolbar.html'"
+     xmlns="http://www.w3.org/1999/html">
+</div>
+
+<div class="gn-search-page"
+     role="main"
+     data-ng-controller="GnSearchController">
+  <cookiewarning></cookiewarning>
+  <div class=""
+       data-ng-controller="gnsInspireportal">
+    <gn-extend-mainctrl></gn-extend-mainctrl>
+
+    <div data-gn-saved-selections="">
+      <div data-ng-include="'../../catalog/views/inspireportal/templates/home.html'"
+           data-ng-show="activeTab == '/home'"/>
+      <div data-ng-include="'../../catalog/views/inspireportal/templates/results.html'"
+           data-ng-show="activeTab == '/search'"/>
+      <div data-ng-if="isMapViewerEnabled && !isExternalViewerEnabled"
+           data-ng-include="'../../catalog/views/inspireportal/templates/map.html'"
+           data-ng-show="activeTab == '/map'"/>
+      <div data-ng-include="'../../catalog/views/inspireportal/templates/recordView.html'"
+           data-ng-show="activeTab == '/metadata'" class="gn-view-approved"/>
+      <div data-ng-include="'../../catalog/views/inspireportal/templates/recordView.html'"
+           data-ng-show="activeTab == '/metadraf'" class="gn-view-not-approved"/>
+      <div data-ng-include="'../../catalog/views/inspireportal/templates/page.html'"
+           data-ng-if="activeTab == '/page'"/>
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<div data-ng-show="gnCfg.mods.footer.enabled"
+     data-ng-include="'../../catalog/views/inspireportal/templates/footer.html'">
+</div>
