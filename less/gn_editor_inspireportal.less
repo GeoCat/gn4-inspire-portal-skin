@@ -1,15 +1,23 @@
 @import "gn_search_inspireportal.less";
 @import "../../../style/gn_editor.less";
-@import "gn_view.less";
+@import "gn_view_inspireportal.less";
 
 
 .gn-results-editor {
   .gn-status {
     font-weight: 500;
+    color: @text-muted;
+    border: 1px solid @btn-default-border;
+    padding: 0 5px;
+    margin-right: 5px;
+    border-radius: 3px;
   }
   tr:hover {
     background-color: @panel-footer-bg;
     transition: background-color ease 0.5s;
+  }
+  .gn-record-details {
+    margin-top: 5px;
   }
 }
 
@@ -82,10 +90,10 @@
   .gn-search-facet {
     padding-bottom: 15px;
   }
-  // modal dialog (wider for for multilingual)
-  @media (min-width: @screen-sm-min) {
-    .modal-dialog {
-      width: 760px;
+  .modal-dialog {
+    .modal-body {
+      max-height: 85vh;
+      overflow: auto;
     }
   }
   form.gn-editor {
@@ -595,7 +603,7 @@ form.gn-editor.gn-indent-bluescale {
 // inspire
 // md type widget (used only in editor for now)
 .fa-inspire {
-  background: url('../catalog/views/inspireportal/images/inspire.png');
+  background: url('../catalog/views/default/images/inspire.png');
   background-repeat: no-repeat;
   background-size: 16px 16px;
   width: 16px;

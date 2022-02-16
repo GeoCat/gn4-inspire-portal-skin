@@ -1,16 +1,23 @@
-<!-- site header -->
-<div data-ng-include="'../../catalog/views/inspireportal/templates/siteHeader.html'"></div>
-
-<!-- page header -->
-<div data-ng-include="'../../catalog/views/inspireportal/templates/pageHeader.html'"></div>
-
-<!-- GN navigation bar -->
-<div class="navbar navbar-default gn-top-bar"
+<header class="gn-header"
+        data-ng-show="gnCfg.mods.header.enabled && gnCfg.mods.header.isLogoInHeader">
+  <div data-ng-class="fluidHeaderLayout ? 'container-fluid' : 'container'">
+    <div class=row>
+      <div class="col-md-12 text-{{gnCfg.mods.header.logoInHeaderPosition}}">
+        <a data-gn-active-tb-item="{{gnCfg.mods.home.appUrl}}">
+          <img class="{{gnCfg.mods.header.logoInHeaderPosition}}"
+               alt="{{'siteLogo' | translate}}"
+               data-ng-src="{{gnUrl}}../images/logos/{{info['node/id'] || info['system/site/siteId']}}.png?random{{info['system/site/lastUpdate']}}"/>
+          </a>
+      </div>
+    </div>
+  </div>
+</header>
+<nav class="navbar navbar-default gn-top-bar"
      role="navigation"
      data-ng-show="gnCfg.mods.header.enabled"
-     data-ng-include="'../../catalog/views/inspireportal/templates/top-toolbar.html'"
+     data-ng-include="isMenubarAccessible ? '../../catalog/templates/top-toolbar-accessible.html' : '../../catalog/templates/top-toolbar.html'"
      xmlns="http://www.w3.org/1999/html">
-</div>
+</nav>
 
 <div class="gn-search-page"
      role="main"
@@ -38,7 +45,8 @@
   </div>
 </div>
 
-<!-- footer -->
-<div data-ng-show="gnCfg.mods.footer.enabled"
+
+<footer class="navbar navbar-default gn-bottom-bar" role="navigation"
+     data-ng-show="gnCfg.mods.footer.enabled"
      data-ng-include="'../../catalog/views/inspireportal/templates/footer.html'">
-</div>
+</footer>
